@@ -1,4 +1,4 @@
-import { register } from "../../api/auth/register.js";
+import { apiService } from "../../apiService.js";
 import { displayMessage } from "../../ui/common/displayMessage.js";
 import MESSAGES from "../../constants/messages.js";
 
@@ -14,7 +14,7 @@ async function handleRegisterSubmit(event) {
   const profile = Object.fromEntries(formData.entries());
 
   try {
-    await register(profile);
+    await apiService.register(profile);
     displayMessage(
       messageContainer,
       "success",
@@ -22,7 +22,7 @@ async function handleRegisterSubmit(event) {
     );
     form.reset();
   } catch (error) {
-    displayMessage(messageContainer, "error", error.message);
+    displayMessage(messageContainer, "error", error.error);
   }
 }
 

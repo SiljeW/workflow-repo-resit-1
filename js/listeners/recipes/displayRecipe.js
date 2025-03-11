@@ -14,11 +14,11 @@ export async function displayRecipe() {
   const container = document.querySelector("#recipe-container");
 
   try {
-    const venue = await apiService.getRecipe(id);
-    const { name } = venue;
-    updateMainHeading(name);
-    updateTitle(name);
-    renderRecipe(container, venue);
+    const recipe = await apiService.getRecipeById(id);
+    const { data } = recipe;
+    updateMainHeading(data.name);
+    updateTitle(data.name);
+    renderRecipe(container, data);
   } catch (error) {
     console.log(error);
     displayMessage(container, "error", error.message);

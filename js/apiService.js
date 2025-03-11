@@ -5,55 +5,55 @@ export const mockData = {
   recipes: [
     {
       id: 1,
-      title: "Pasta Carbonara",
+      name: "Pasta Carbonara",
       description: "Classic Italian pasta dish with eggs, cheese, and bacon",
       image: "https://picsum.photos/id/292/400/600",
     },
     {
       id: 2,
-      title: "Chicken Curry",
+      name: "Chicken Curry",
       description: "Spicy chicken curry with coconut milk and vegetables",
       image: "https://picsum.photos/id/429/400/600",
     },
     {
       id: 3,
-      title: "Chocolate Cake",
+      name: "Chocolate Cake",
       description: "Rich and moist chocolate cake with ganache frosting",
       image: "https://picsum.photos/id/488/400/600",
     },
     {
       id: 4,
-      title: "Salad",
+      name: "Salad",
       description: "Fresh and healthy salad with vegetables and dressing",
       image: "https://picsum.photos/id/614/400/600",
     },
     {
       id: 5,
-      title: "Pizza",
+      name: "Pizza",
       description: "Delicious pizza with cheese and toppings",
       image: "https://picsum.photos/id/1060/400/600",
     },
     {
       id: 6,
-      title: "Sushi",
+      name: "Sushi",
       description: "Fresh sushi with fish and vegetables",
       image: "https://picsum.photos/id/1080/400/600",
     },
     {
       id: 7,
-      title: "Burger",
+      name: "Burger",
       description: "Juicy burger with beef patty, cheese, and vegetables",
       image: "https://picsum.photos/id/1065/400/600",
     },
     {
       id: 8,
-      title: "Tacos",
+      name: "Tacos",
       description: "Mexican tacos with beef, cheese, and vegetables",
       image: "https://picsum.photos/id/1079/400/600",
     },
     {
       id: 9,
-      title: "Pad Thai",
+      name: "Pad Thai",
       description: "Thai pad thai with noodles, vegetables, and peanuts",
       image: "https://picsum.photos/id/1084/400/600",
     },
@@ -61,8 +61,9 @@ export const mockData = {
   users: [
     {
       id: 1,
-      name: "Demo User",
+      name: "Test User",
       email: "workflow@noroff.no",
+      password: "123456",
       token: "mock-token-12345",
     },
   ],
@@ -99,8 +100,36 @@ export const apiService = {
     });
   },
 
+  forgotPassword: ({ email }) => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const user = mockData.users.find(
+          (u) => u.email === email.trim().toLowerCase()
+        );
+
+        if (user) {
+          // In a real app, this would send an email with a reset link
+          // For this mock, we'll just simulate a successful response
+          resolve({
+            data: {
+              message: "Password reset email sent",
+            },
+            status: 200,
+            statusText: "OK",
+          });
+        } else {
+          reject({
+            error: "No account found with that email address",
+            status: 404,
+            statusText: "Not Found",
+          });
+        }
+      }, 1000);
+    });
+  },
+
   // Register function
-  register: (name, email, password) => {
+  register: ({ name, email, password }) => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const user = mockData.users.find((u) => u.email === email);
