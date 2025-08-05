@@ -4,9 +4,9 @@
  * @returns {string} - The formatted title
  */
 export function formatRecipeTitle(title) {
-  if (!title) return "";
+  if (!title) return '';
   return title
-    .split(" ")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-    .join(" ");
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
 }

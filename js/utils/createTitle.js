@@ -1,4 +1,4 @@
-import CONFIG from "../config.js";
+import CONFIG from '../config.js';
 
 /**
  * Creates a formatted page title by combining the page title with the site title
@@ -7,7 +7,7 @@ import CONFIG from "../config.js";
  */
 export function createTitle(title) {
   // Handle empty or invalid title
-  if (!title || typeof title !== "string") {
+  if (!title || typeof title !== 'string') {
     return CONFIG.siteTitle;
   }
 
@@ -15,7 +15,7 @@ export function createTitle(title) {
   const cleanTitle = title.trim();
 
   // If title is empty after trimming, just return site title
-  if (cleanTitle === "") {
+  if (cleanTitle === '') {
     return CONFIG.siteTitle;
   }
 
