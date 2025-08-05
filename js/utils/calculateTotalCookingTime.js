@@ -4,7 +4,7 @@
  * @param {number} cookTimeMinutes - Cooking time in minutes
  * @returns {number} - Total cooking time in minutes
  */
-function _calculateTotalCookingTime(prepTimeMinutes, cookTimeMinutes) {
+export function calculateTotalCookingTime(prepTimeMinutes, cookTimeMinutes) {
   if (
     typeof prepTimeMinutes !== 'number' ||
     typeof cookTimeMinutes !== 'number'

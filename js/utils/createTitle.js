@@ -1,4 +1,4 @@
-import CONFIG from '../config.js';
+import { CONFIG } from '../config.js';
 
 /**
  * Creates a formatted page title by combining the page title with the site title
