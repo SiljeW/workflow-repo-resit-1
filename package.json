@@ -6,6 +6,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx tailwindcss -i ./css/input.css -o ./css/style.css --watch",
+    "serve": "npx serve .",
+    "start": "concurrently \"npm run dev\" \"npm run serve\"",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
@@ -13,7 +15,11 @@
     "prepare": "husky",
     "pre-commit": "lint-staged",
     "test": "vitest",
-    "test:run": "vitest run"
+    "test:run": "vitest run",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:debug": "playwright test --debug"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +30,7 @@
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.6.4",
     "@types/node": "^24.2.0",
+    "concurrently": "^9.2.0",
     "eslint": "^9.32.0",
     "eslint-config-prettier": "^9.1.2",
     "eslint-plugin-jest": "^28.14.0",
