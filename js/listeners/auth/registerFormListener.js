@@ -1,14 +1,14 @@
-import { apiService } from "../../apiService.js";
-import { displayMessage } from "../../ui/common/displayMessage.js";
-import MESSAGES from "../../constants/messages.js";
+import { apiService } from '../../apiService.js';
+import { displayMessage } from '../../ui/common/displayMessage.js';
+import MESSAGES from '../../constants/messages.js';
 
 async function handleRegisterSubmit(event) {
   event.preventDefault();
   const form = event.target;
 
-  const messageContainer = document.querySelector("#message-container");
+  const messageContainer = document.querySelector('#message-container');
 
-  messageContainer.innerHTML = "";
+  messageContainer.innerHTML = '';
 
   const formData = new FormData(form);
   const profile = Object.fromEntries(formData.entries());
@@ -17,19 +17,19 @@ async function handleRegisterSubmit(event) {
     await apiService.register(profile);
     displayMessage(
       messageContainer,
-      "success",
+      'success',
       MESSAGES.en.registrationSuccess
     );
     form.reset();
   } catch (error) {
-    displayMessage(messageContainer, "error", error.error);
+    displayMessage(messageContainer, 'error', error.error);
   }
 }
 
 export function registerFormListener() {
-  const form = document.querySelector("#registerForm");
+  const form = document.querySelector('#registerForm');
 
   if (form) {
-    form.addEventListener("submit", handleRegisterSubmit);
+    form.addEventListener('submit', handleRegisterSubmit);
   }
 }

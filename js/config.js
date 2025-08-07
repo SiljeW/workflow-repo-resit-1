@@ -1,3 +1,3 @@
 export const CONFIG = {
-  siteTitle: "Resit Recipes",
+  siteTitle: 'Resit Recipes',
 };
